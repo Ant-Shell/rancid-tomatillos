@@ -11,7 +11,7 @@ const SingleMovie = (props) => {
                 <h3>Genre: {props.singleMovie.genres}</h3>
             </div>
             <h3>{props.singleMovie.overview}</h3>
-            <button onClick={() => props.showAllMovies()}>View All</button>
+            <button onClick={() => props.showAllMovies()}>View All Movies</button>
         </div>
     )
 }
