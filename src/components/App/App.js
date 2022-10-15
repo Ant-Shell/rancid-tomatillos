@@ -4,24 +4,35 @@ import individualMovie from "../../individualMovieData"
 import MovieCardContainer from "../MovieCardContainer/MovieCardContainer"
 import SingleMovie from "../SingleMovie/SingleMovie"
 import './App.css';
+import { fetchAllMovieData, fetchSpecificDetails } from '../../apiCalls'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       allMovies: true,
-      movies: movieData.movies,
-      movie: individualMovie.movie
+      movies: [],
+      movie: {}
     }
-  }
-
-  showMovieDetails = () => {
-    this.setState({ allMovies: false })
   }
 
   showAllMovies = () => {
     this.setState({ allMovies: true})
   }
+
+  componentDidMount = () => {
+    fetchAllMovieData()
+    .then(data => this.setState({movies: data.movies}))
+    .catch(err => console.error(err));
+  }
+
+  showMovieDetails = (id) => {
+    this.setState({ allMovies: false })
+    fetchSpecificDetails(id)
+    .then(data => this.setState({movie: data.movie}))
+    .catch(err => console.error(err));
+  }
+
 
   render() {
     return(
