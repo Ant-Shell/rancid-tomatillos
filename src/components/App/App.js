@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import movieData from "../../movieData"
-import individualMovie from "../../individualMovieData"
 import MovieCardContainer from "../MovieCardContainer/MovieCardContainer"
 import SingleMovie from "../SingleMovie/SingleMovie"
 import './App.css';
