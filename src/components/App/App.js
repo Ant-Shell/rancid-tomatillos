@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import MovieCardContainer from "../MovieCardContainer/MovieCardContainer"
 import SingleMovie from "../SingleMovie/SingleMovie"
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import './App.css';
 import { fetchAllMovieData, fetchSpecificDetails } from '../../apiCalls'
 
@@ -35,9 +37,9 @@ class App extends Component {
   render() {
     return(
       <main>
-        {/* <Header /> */}
+        <Header />
         {this.state.allMovies ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> :   <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> }
-        {/* <Footer /> */}
+        <Footer />
       </main>
     )
   }
