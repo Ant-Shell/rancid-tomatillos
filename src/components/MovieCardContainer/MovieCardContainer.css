@@ -1,4 +1,5 @@
 .all-movies-container {
+  height: 80vh;
   display: flex;
   flex-direction: row;
   overflow: auto;
