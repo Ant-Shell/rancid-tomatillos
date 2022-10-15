@@ -1,7 +1,9 @@
 .card {
  display: flex;
  flex-direction: column;
- align-items: center
+ align-items: center;
+ margin-left: 3vw;
+ color: white;
 }
 
 .movie-title {
@@ -10,4 +12,8 @@
 
 .movie-poster {
   height: 50vh;
+}
+
+.card:hover {
+  cursor:pointer;
 }

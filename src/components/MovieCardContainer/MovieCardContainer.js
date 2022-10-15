@@ -16,7 +16,7 @@ const MovieCardContainer = ( {movies, showMovieDetails}) => {
   })
 
   return (
-    <div className="movie-container">
+    <div className="all-movies-container">
       { allMovies }
     </div>
   )
