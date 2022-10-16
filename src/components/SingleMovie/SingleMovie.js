@@ -12,7 +12,7 @@ const SingleMovie = ({singleMovie, showAllMovies}) => {
                 <h3>Genre: {genres}</h3>
             </div>
             <h3>{overview}</h3>
-            <button onClick={() => showAllMovies()}>View All</button>
+            <button onClick={() => showAllMovies()}>View All Movies</button>
         </div>
     )
 }

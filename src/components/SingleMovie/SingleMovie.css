@@ -6,10 +6,16 @@
     text-align: center;
     width: 80vw;
     justify-content: space-evenly;
+    color: white;
+    overflow-y: auto;
 }
 
 .specifics {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+}
+
+button:hover {
+  cursor:pointer;
 }
