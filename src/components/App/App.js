@@ -38,7 +38,9 @@ class App extends Component {
     return(
       <main>
         <Header />
-        {this.state.allMovies ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> :   <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> }
+          <div className="view-wrapper">
+            {this.state.allMovies ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> : <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> }
+          </div>
         <Footer />
       </main>
     )
