@@ -10,4 +10,5 @@ const Card = ( {title, poster, showMovieDetails, id} ) => {
   )
 }
 
+
 export default Card
