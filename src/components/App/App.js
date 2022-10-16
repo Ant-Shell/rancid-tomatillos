@@ -39,7 +39,9 @@ class App extends Component {
       <main>
         <Header />
           <div className="view-wrapper">
-            {this.state.allMovies ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> : <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> }
+            {this.state.allMovies 
+            ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> 
+            : <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> }
           </div>
         <Footer />
       </main>
