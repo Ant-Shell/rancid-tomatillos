@@ -13,9 +13,9 @@ const fetchAllMovieData = async () => {
     }
 }
 
-const fetchSpecificDetails = async (details) => {
+const fetchSpecificDetails = async (id) => {
     try {
-        const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${details}`)
+        const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
         if(!response.ok) {
             console.log(response.status)
             throw new Error('An error has occurred!')
