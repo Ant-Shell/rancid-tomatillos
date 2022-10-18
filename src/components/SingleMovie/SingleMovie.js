@@ -1,8 +1,9 @@
 import React from "react"
 import "./SingleMovie.css"
+import {Link} from "react-router-dom"
 
-const SingleMovie = ({singleMovie, showAllMovies}) => {
-    const {title, average_rating, runtime, genres, overview} = singleMovie
+const SingleMovie = ({movie}) => {
+    const {title, average_rating, runtime, genres, overview} = movie
     return (
         <div className="movie-box">
             <h2>{title}</h2>
@@ -12,7 +13,7 @@ const SingleMovie = ({singleMovie, showAllMovies}) => {
                 <h3>Genre: {genres}</h3>
             </div>
             <h3>{overview}</h3>
-            <button onClick={() => showAllMovies()}>View All Movies</button>
+            <Link to="/"><button>View All Movies</button></Link>
         </div>
     )
 }
