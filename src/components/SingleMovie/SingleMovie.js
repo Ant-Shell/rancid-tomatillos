@@ -2,8 +2,8 @@ import React from "react"
 import "./SingleMovie.css"
 import {Link} from "react-router-dom"
 
-const SingleMovie = ({title, average_rating, runtime, genres, overview}) => {
-    // const {title, average_rating, runtime, genres, overview} = singleMovie
+const SingleMovie = ({movie}) => {
+    const {title, average_rating, runtime, genres, overview} = movie
     return (
         <div className="movie-box">
             <h2>{title}</h2>

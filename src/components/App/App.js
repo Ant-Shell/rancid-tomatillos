@@ -11,13 +11,10 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      // allMovies: true,
       movies: [],
-      movie: []
+      movie: {}
     }
   }
-
-
 
   componentDidMount = () => {
     fetchAllMovieData()
@@ -26,28 +23,20 @@ class App extends Component {
   }
 
   showMovieDetails = (id) => {
-    // this.setState({ allMovies: false })
     fetchSpecificDetails(id)
-    .then(data => this.setState({movie: [data.movie]}))
+    .then(data => {
+     this.setState({movie: data.movie})})
     .catch(err => console.error(err));
   }
 
   render = () => {
-
     return(
       <main>
         <Header />
           <div className="view-wrapper">
-            {/* {this.state.allMovies 
-            ? <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> 
-            : <SingleMovie showAllMovies={this.showAllMovies} singleMovie={this.state.movie} /> } */}
             <Switch>
             <Route exact path="/" render={() => <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> } />
-            <Route exact path="/:id" render={({match}) => {
-              const movieToRender = this.state.movie.find(movie => movie.id === parseInt(match.params.id))
-              return <SingleMovie movieToRender={movieToRender}  />
-              }} 
-            />
+            <Route exact path="/:id" render={({match}) => <SingleMovie movie={this.state.movie} /> } /> 
             </Switch>
           </div>
         <Footer />
