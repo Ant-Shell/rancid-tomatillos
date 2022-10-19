@@ -22,7 +22,7 @@ class SingleMovie extends Component {
     render = () => {
         const singleMovie = this.state.movie
         return (
-            <div className="movie-box">
+            this.state.movie ? <div className="movie-box">
                 <h2>{singleMovie.title}</h2>
                 <img className="movie-poster" src={singleMovie.poster_path} alt={`Movie poster for ${singleMovie.title}`}></img>
                 <div className="specifics">
@@ -32,7 +32,7 @@ class SingleMovie extends Component {
             </div>
                 <h3>{this.state.movie.overview}</h3>
                 <Link to="/"><button>View All Movies</button></Link>
-            </div>
+            </div> : <p className="error-message">An error has occured, please try again later.</p>
         )
     }
 }
