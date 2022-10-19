@@ -4,7 +4,7 @@ import SingleMovie from "../SingleMovie/SingleMovie"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import './App.css';
-import { fetchAllMovieData, fetchSpecificDetails } from '../../apiCalls'
+import { fetchAllMovieData } from '../../apiCalls'
 import { Route, Switch } from "react-router-dom"
 
 class App extends Component {
@@ -12,7 +12,6 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      movie: {}
     }
   }
 
@@ -22,21 +21,14 @@ class App extends Component {
     .catch(err => console.error(err));
   }
 
-  showMovieDetails = (id) => {
-    fetchSpecificDetails(id)
-    .then(data => {
-     this.setState({movie: data.movie})})
-    .catch(err => console.error(err));
-  }
-
   render = () => {
     return(
       <main>
         <Header />
           <div className="view-wrapper">
             <Switch>
-            <Route exact path="/" render={() => <MovieCardContainer showMovieDetails={this.showMovieDetails} movies={this.state.movies}/> } />
-            <Route exact path="/:id" render={({match}) => <SingleMovie movie={this.state.movie} /> } /> 
+            <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} /> } />
+            <Route exact path="/:id" render={({match}) => <SingleMovie movie={this.state.movie} id={match.params.id}/> } />
             </Switch>
           </div>
         <Footer />
