@@ -40,6 +40,8 @@ describe('empty spec', () => {
   it("should show all movies when clicking 'show all movies' button", () => {
     cy.get('button').click()
     .visit('http://localhost:3000/')
-
+    .get('.all-movies-container')
+    .find('img')
+    .should('have.length', 40)
   })
 })

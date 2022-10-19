@@ -24,7 +24,22 @@ describe('empty spec', () => {
     
   })
 
-  // it('should', () => {
-
+  // ******REVISIT TEST ONCE WE MAKE ERROR PAGE******
+  // Stub works, also need to stub in forEach as needed
+  //
+  // it('should display an error message if a link is invalid', () => {
+  //   cy.intercept({
+  //     method: 'GET',
+  //     url: 'http://localhost:3001/694919'
+  //   },
+  //   {
+  //     statusCode: 401,
+  //     body: { 
+  //       message: 'An error has occurred!' 
+  //     }
+  //   })
+  //   .get('[id="694919"]').click()
   // })
+    
+    
 })
