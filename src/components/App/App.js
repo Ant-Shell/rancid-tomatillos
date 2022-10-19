@@ -28,7 +28,7 @@ class App extends Component {
           <div className="view-wrapper">
             <Switch>
             <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} /> } />
-            <Route exact path="/:id" render={({match}) => <SingleMovie movie={this.state.movie} id={match.params.id}/> } />
+            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
             </Switch>
           </div>
         <Footer />
