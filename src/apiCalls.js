@@ -25,6 +25,7 @@ const fetchSpecificDetails = async (id) => {
     }
     catch (e) {
         console.log(e.message)
+        return (e.message)
     }
 }
 

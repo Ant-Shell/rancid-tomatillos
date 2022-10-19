@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 
 const Card = ( {title, poster, showMovieDetails, id} ) => {
   return (
-    <div onClick={() => showMovieDetails(id)} className="card">
+    <div onClick={() => showMovieDetails(id)} className="card" id={id}>
       <Link to={`/${id}`}>
         <img className="movie-poster" src={poster} alt={`Movie poster for ${title}`}></img>
         <h2 className="movie-title">{title}</h2>
