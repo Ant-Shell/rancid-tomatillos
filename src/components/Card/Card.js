@@ -2,9 +2,9 @@ import React from "react"
 import "./Card.css"
 import {Link} from "react-router-dom"
 
-const Card = ( {title, poster, showMovieDetails, id} ) => {
+const Card = ( {title, poster, id} ) => {
   return (
-    <div onClick={() => showMovieDetails(id)} className="card" id={id}>
+    <div className="card" id={id}>
       <Link to={`/${id}`}>
         <img className="movie-poster" src={poster} alt={`Movie poster for ${title}`}></img>
         <h2 className="movie-title">{title}</h2>
