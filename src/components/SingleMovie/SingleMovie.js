@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { fetchSpecificDetails } from '../../apiCalls'
+import ErrorPage from "../ErrorPage/ErrorPage"
 import {Link} from "react-router-dom"
 import "./SingleMovie.css"
 
@@ -12,7 +13,8 @@ class SingleMovie extends Component {
             voteAverage: '',
             runTime: '',
             overview: '',
-            genres: []
+            genres: [],
+            hasError: false
         }
     }
 
@@ -31,12 +33,19 @@ class SingleMovie extends Component {
          this.setState({title: data.title, posterPath: data.poster_path, 
             voteAverage: data.vote_average, runTime: data.runtime, overview: data.overview,
             genres: genreList})})
-        .catch(err => console.error(err));
+        .catch(err => {
+            if (err) {
+                this.setState({ hasError: true})
+            }
+            console.error(err)});
       }
 
     render = () => {
         const singleMovie = this.state
         return (
+            this.state.hasError 
+            ? <ErrorPage errorMessage={this.state.errorMessage}/>
+            :
             <div className="movie-box">
                 <h2>{singleMovie.title}</h2>
                 <img className="movie-poster" src={`https://image.tmdb.org/t/p/original/${singleMovie.posterPath}`} alt={`Movie poster for ${singleMovie.title}`}></img>
@@ -48,6 +57,7 @@ class SingleMovie extends Component {
                 <h3>{singleMovie.overview}</h3>
                 <Link to="/"><button>View All Movies</button></Link>
             </div>
+            
         )
     }
 }
