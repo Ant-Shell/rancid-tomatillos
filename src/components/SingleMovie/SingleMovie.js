@@ -36,8 +36,6 @@ class SingleMovie extends Component {
 
     render = () => {
         const singleMovie = this.state
-        console.log("Single movie:", singleMovie)
-        console.log("Another test", this.state)
         return (
             <div className="movie-box">
                 <h2>{singleMovie.title}</h2>
