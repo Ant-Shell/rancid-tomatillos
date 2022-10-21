@@ -1,0 +1,10 @@
+.error-box {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.error-image {
+    height: 60vh;
+}
