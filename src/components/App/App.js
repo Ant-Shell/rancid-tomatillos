@@ -4,7 +4,7 @@ import SingleMovie from "../SingleMovie/SingleMovie"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import ErrorPage from "../ErrorPage/ErrorPage";
-import LoadingPage from "../LoadingPage/LoadingPage";
+// import LoadingPage from "../LoadingPage/LoadingPage";
 import './App.css';
 import { fetchAllMovieData } from '../../apiCalls'
 import { Route, Switch } from "react-router-dom"
@@ -19,8 +19,13 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetchAllMovieData()
-    .then(data => this.setState({movies: data.results}))
+    Promise.all([fetchAllMovieData(1), fetchAllMovieData(2), fetchAllMovieData(3)])
+    .then(data => {
+      const allMovies = data.reduce((acc, movie) => {
+      acc.push(movie.results)
+      return acc
+    }, []).flat()
+    this.setState({movies: allMovies})})
     .catch(err => {
       if (err) {
         this.setState({ errorMessage: err })
