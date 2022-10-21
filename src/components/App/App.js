@@ -4,7 +4,7 @@ import SingleMovie from "../SingleMovie/SingleMovie"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import ErrorPage from "../ErrorPage/ErrorPage";
-// import LoadingPage from "../LoadingPage/LoadingPage";
+import LoadingPage from "../LoadingPage/LoadingPage";
 import './App.css';
 import { fetchAllMovieData } from '../../apiCalls'
 import { Route, Switch } from "react-router-dom"
@@ -14,7 +14,7 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      errorMessage: null
+      hasError: false
     }
   }
 
@@ -28,7 +28,7 @@ class App extends Component {
     this.setState({movies: allMovies})})
     .catch(err => {
       if (err) {
-        this.setState({ errorMessage: err })
+        this.setState({ hasError: true })
       }
       console.error(err)});
   }
@@ -39,8 +39,9 @@ class App extends Component {
         <Header />
           <div className="view-wrapper">
             <Switch>
-            {this.state.errorMessage !== null 
-            ? <Route exact path="/" render={() => <ErrorPage /> }/> 
+            {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
+            {this.state.hasError 
+            ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
             : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} /> } />}
             <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
             </Switch>
