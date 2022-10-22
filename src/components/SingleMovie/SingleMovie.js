@@ -43,7 +43,7 @@ class SingleMovie extends Component {
     render = () => {
         const singleMovie = this.state
         return (
-            this.state.hasError 
+            this.state.hasError || this.state.title === ''
             ? <ErrorPage errorMessage={this.state.errorMessage}/>
             :
             <div className="movie-box">
