@@ -1,7 +1,10 @@
-describe('empty spec', () => {
+describe('all-movies', () => {
   beforeEach(() => {
-    // intercept on page load (beforeEach)
-    // data file reads into stub - api endpoint to copy data?
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const pageNum = 1
+    cy.intercept('GET', `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNum}&with_watch_monetization_types=flatrate`, {
+      fixture: 'movieData.json'
+    })
     cy.visit('http://localhost:3000');
   })
   
@@ -14,32 +17,35 @@ describe('empty spec', () => {
   it('should show a collection of movies on load', () => {
     cy.get('.all-movies-container')
     .find('img')
-    .should('have.length', 40)
+    .should('have.length', 60)
     
   })
 
   it('should display movie details when clicking a movie card', () => {
-    cy.get('[id="694919"]').click()
-    .url().should('include', '/694919')
-    
+    cy.get('[id="718930"]').click()
+    .url().should('include', '/718930')
+    .get('button').click()
   })
 
-  // ******REVISIT TEST ONCE WE MAKE ERROR PAGE******
-  // Stub works, also need to stub in forEach as needed
-  //
-  // it('should display an error message if a link is invalid', () => {
-  //   cy.intercept({
-  //     method: 'GET',
-  //     url: 'http://localhost:3001/694919'
-  //   },
-  //   {
-  //     statusCode: 401,
-  //     body: { 
-  //       message: 'An error has occurred!' 
-  //     }
-  //   })
-  //   .get('[id="694919"]').click()
-  // })
-    
-    
+  it('should display a loading screen if no movies are loaded yet', () => {
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const pageNum = 1
+    cy.intercept('GET', `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNum}&with_watch_monetization_types=flatrate`, {
+      fixture: 'emptyData.json'
+    })
+    cy.visit('http://localhost:3000')
+    .get('h2')
+    .contains('Stay tuned for our feature presentation...')
+  })
+
+  it('should display an error message if a link is invalid', () => {
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const id = 717728
+    cy.intercept('GET', `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`, {
+      fixture: 'emptyData.json'
+    })
+    cy.get('[id="717728"]').click()
+    .get('h2')
+    .contains('Oops! An error occurred while loading.')  
+  })
 })

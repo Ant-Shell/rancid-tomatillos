@@ -1,15 +1,17 @@
 import React from "react";
 import "./ErrorPage.css"
 import errorImage from "../../assets/ErrorScreen.png"
+import { Link } from "react-router-dom"
 
 
 const ErrorPage = ( {errorMessage}) => {
     return (
       <div className="error-box">
-        <h1>Oops! An error occurred while loading.</h1>
-        <h2>We'll be back after we change reels!</h2>
-        <h2>Error message: {errorMessage}</h2>
+        <h2>Oops! An error occurred while loading.</h2>
+        <h3>We'll be back after we change reels!</h3>
+        <h4>Error message: {errorMessage}</h4>
         <img className="error-image" src={errorImage} alt="two film canisters with film flowing between them in a fancy loop"></img>
+        <Link to="/"><button>View All Movies</button></Link>
       </div>
     )
 }
