@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('all-movies', () => {
   beforeEach(() => {
     const API_KEY = process.env.REACT_APP_API_KEY
     const pageNum = 1
