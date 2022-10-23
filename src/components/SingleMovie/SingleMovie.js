@@ -50,7 +50,7 @@ class SingleMovie extends Component {
                 <h2>{singleMovie.title}</h2>
                 <img className="movie-poster" src={`https://image.tmdb.org/t/p/original/${singleMovie.posterPath}`} alt={`Movie poster for ${singleMovie.title}`}></img>
                 <div className="specifics">
-                <h3 id='rating'>Rating: {singleMovie.voteAverage} </h3>
+                <h3 id='rating'>Rating: {parseInt(singleMovie.voteAverage).toFixed()}/10 </h3>
                 <h3 id='runtime'>Runtime: {singleMovie.runTime} minutes</h3>
                 <h3 id='genre'>Genre: {singleMovie.genres}</h3>
             </div>

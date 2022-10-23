@@ -1,14 +1,10 @@
-describe('single-movie', () => {
+describe('Individual Movie', () => {
   beforeEach(() => {
-    // intercept on page load (beforeEach)
-    // data file reads into stub - api endpoint to copy data?
-    const API_KEY = process.env.REACT_APP_API_KEY
-    const id = 436270
-    cy.intercept('GET', `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`, {
+    cy.intercept('GET', Cypress.env('individual_movie1'), {
       fixture: 'singleMovieData1.json'
     })
     cy.visit('http://localhost:3000/')
-    .get('[id="436270"]').click().wait(500)
+    .get('[id="436270"]').click()
   })
 
   it('should have the title', () => {
@@ -24,8 +20,8 @@ describe('single-movie', () => {
 
   it('should have a rating', () => {
     cy.get('h3')
-    // .contains('7.473') Unsure what is going on, test and mock data show different values ...
-    .contains('Rating')
+    .contains('7/10')
+
   })
 
   it('should have a runtime', () => {
