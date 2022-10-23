@@ -30,7 +30,7 @@ class SingleMovie extends Component {
                 }
                 return acc
             }, '')
-         this.setState({title: data.title, posterPath: data.poster_path, 
+         this.setState({backgroundImage: data.backdrop_path, title: data.title, posterPath: data.poster_path, 
             voteAverage: data.vote_average, runTime: data.runtime, overview: data.overview,
             genres: genreList})})
         .catch(err => {
@@ -46,7 +46,7 @@ class SingleMovie extends Component {
             this.state.hasError || this.state.title === ''
             ? <ErrorPage errorMessage={this.state.errorMessage}/>
             :
-            <div className="movie-box">
+            <div className="movie-box" style={{backgroundImage: `${this.state.backgroundImage}`}}>
                 <h2>{singleMovie.title}</h2>
                 <img className="movie-poster" src={`https://image.tmdb.org/t/p/original/${singleMovie.posterPath}`} alt={`Movie poster for ${singleMovie.title}`}></img>
                 <div className="specifics">
