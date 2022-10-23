@@ -1,0 +1,7 @@
+.loading-box {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
