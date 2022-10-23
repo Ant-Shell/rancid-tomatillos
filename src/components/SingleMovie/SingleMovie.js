@@ -46,7 +46,7 @@ class SingleMovie extends Component {
             this.state.hasError || this.state.title === ''
             ? <ErrorPage errorMessage={this.state.errorMessage}/>
             :
-            <div className="movie-box" style={{backgroundImage: `${this.state.backgroundImage}`}}>
+            <div className="movie-box" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${singleMovie.backgroundImage})`}}>
                 <h2>{singleMovie.title}</h2>
                 <img className="movie-poster" src={`https://image.tmdb.org/t/p/original/${singleMovie.posterPath}`} alt={`Movie poster for ${singleMovie.title}`}></img>
                 <div className="specifics">
