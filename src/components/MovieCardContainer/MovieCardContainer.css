@@ -5,4 +5,13 @@
   flex-direction: row;
   overflow: auto;
   margin-right: 1vw;
+  align-items: center;
+}
+
+.swiper-button-prev {
+  color: white; 
+}
+
+.swiper-button-next {
+  color: white; 
 }

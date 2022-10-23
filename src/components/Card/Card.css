@@ -2,13 +2,14 @@
  display: flex;
  flex-direction: column;
  align-items: center;
+ justify-content: center;
  margin-left: 3vw;
  color: white;
- height: 50vh;
+ height: 80vh;
 }
 
 .movie-title {
- /* Some sort of styling */
+ text-align: center;
 }
 
 .movie-poster {
@@ -19,5 +20,4 @@
   cursor:pointer;
   box-shadow: 0 0.5em 0.5em -0.4em rgba(255,255,255, 1);  ;
   transform: translateY(-0.25em);
-  /* background-color: white; */
 }
