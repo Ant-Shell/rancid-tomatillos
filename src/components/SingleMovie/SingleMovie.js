@@ -40,6 +40,10 @@ class SingleMovie extends Component {
             console.error(err)});
       }
 
+      restoreMovies = () => {
+        this.props.showSearchBar()
+      }
+
     render = () => {
         const singleMovie = this.state
         return (
@@ -55,7 +59,7 @@ class SingleMovie extends Component {
                 <h3 id='genre'>Genre: {singleMovie.genres}</h3>
             </div>
                 <h3>{singleMovie.overview}</h3>
-                <Link to="/"><button>View All Movies</button></Link>
+                <Link to="/" onClick={this.restoreMovies}><button>View All Movies</button></Link>
             </div>
             
         )

@@ -4,7 +4,7 @@ import MovieSearch from "../MovieSearch/MovieSearch"
 import AWLogo from "../../assets/AWFilmReviews-Transparent.png"
 
 
-const Header = ({ findMovieByTitle, movieSearchResults, clearSearchResults, hasSearchResult }) => {
+const Header = ({ findMovieByTitle, movieSearchResults, clearSearchResults, hasSearchResult, showSearchBar, toggleSearchBar }) => {
   return (
     <header>
       <div className="logo-container">
@@ -13,15 +13,15 @@ const Header = ({ findMovieByTitle, movieSearchResults, clearSearchResults, hasS
       <div className="title-container">
         <h1>A&W Movie Time!</h1>
       </div>
-      <div className="search-container">
+      {showSearchBar ? <div className="search-container">
         <div className="search-box">
           <MovieSearch findMovieByTitle={findMovieByTitle} movieSearchResults={movieSearchResults} 
           clearSearchResults={clearSearchResults} hasSearchResult={hasSearchResult}/>
         </div>
         <div className="display-error">
           {!hasSearchResult && <p className="error-message">Result Not Found</p>}
-        </div>
-      </div>
+        </div> 
+      </div> : null}
     </header>
   )
 }

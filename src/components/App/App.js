@@ -16,7 +16,8 @@ class App extends Component {
       movies: [],
       movieSearchResults: [],
       hasError: false,
-      hasSearchResult: true
+      hasSearchResult: true,
+      showSearchBar: true
     }
   }
 
@@ -48,19 +49,27 @@ class App extends Component {
     this.setState({movieSearchResults: []})
   }
 
+  hideSearchBar = () => {
+    this.setState({showSearchBar: false})
+  }
+
+  showSearchBar = () => {
+    this.setState({showSearchBar: true})
+  }
+
   render = () => {
     return(
       <main>
         <section className="allInfo">
         <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} 
-        clearSearchResults={this.clearSearchResults} hasSearchResult={this.state.hasSearchResult}/>
+        clearSearchResults={this.clearSearchResults} hasSearchResult={this.state.hasSearchResult} showSearchBar={this.state.showSearchBar}/>
           <section className="display-container">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
             {this.state.hasError 
             ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
-            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} /> } />}
-            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
+            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} hideSearchBar={this.hideSearchBar}/>  } />}
+            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id} showSearchBar={this.showSearchBar}/> } />
             </Switch>
           </section>
         <Footer />

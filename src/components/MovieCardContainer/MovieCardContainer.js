@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-const MovieCardContainer = ( {movies, movieSearchResults}) => {
+const MovieCardContainer = ( {movies, movieSearchResults, hideSearchBar}) => {
   const allMovies = movies.map(movie => {
     const {id, title, poster_path} = movie
     return (
@@ -18,6 +18,7 @@ const MovieCardContainer = ( {movies, movieSearchResults}) => {
           title={title}
           poster={`https://image.tmdb.org/t/p/original/${poster_path}`}
           key={id}
+          hideSearchBar={hideSearchBar}
         />
     </SwiperSlide>
     )
@@ -32,6 +33,7 @@ const MovieCardContainer = ( {movies, movieSearchResults}) => {
           title={title}
           poster={`https://image.tmdb.org/t/p/original/${poster_path}`}
           key={id}
+          hideSearchBar={hideSearchBar}
         />
     </SwiperSlide>
     )

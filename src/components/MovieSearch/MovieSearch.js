@@ -28,8 +28,6 @@ class MovieSearch extends Component {
     this.props.clearSearchResults()
   }
   
-
-
   render = () => {
     return (
       <form>
