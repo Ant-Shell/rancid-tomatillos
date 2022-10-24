@@ -14,7 +14,8 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      hasError: false
+      movieSearchResults: [],
+      hasError: false,
     }
   }
 
@@ -33,16 +34,21 @@ class App extends Component {
       console.error(err)});
   }
 
+  findMovieByTitle = (movieTitle) => {
+    const foundMovieList = this.state.movies.filter(movie => movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
+    this.setState({movieSearchResults: foundMovieList})
+  }
+
   render = () => {
     return(
       <main>
-        <Header />
+        <Header findMovieByTitle={this.findMovieByTitle}/>
           <div className="view-wrapper">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
             {this.state.hasError 
             ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
-            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} /> } />}
+            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} /> } />}
             <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
             </Switch>
           </div>
