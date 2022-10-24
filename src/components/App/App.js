@@ -39,10 +39,14 @@ class App extends Component {
     this.setState({movieSearchResults: foundMovieList})
   }
 
+  clearSearchResults = () => {
+    this.setState({movieSearchResults: []})
+  }
+
   render = () => {
     return(
       <main>
-        <Header findMovieByTitle={this.findMovieByTitle}/>
+        <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} clearSearchResults={this.clearSearchResults}/>
           <div className="view-wrapper">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
