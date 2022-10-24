@@ -14,7 +14,10 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      hasError: false
+      movieSearchResults: [],
+      hasError: false,
+      hasSearchResult: true,
+      showSearchBar: true
     }
   }
 
@@ -33,18 +36,40 @@ class App extends Component {
       console.error(err)});
   }
 
+  findMovieByTitle = (movieTitle) => {
+    const foundMovieList = this.state.movies.filter(movie => movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
+    if (!foundMovieList.length) {
+      this.setState({hasSearchResult: false})
+    } else {
+      this.setState({movieSearchResults: foundMovieList, hasSearchResult: true})
+    }
+  }
+
+  clearSearchResults = () => {
+    this.setState({movieSearchResults: []})
+  }
+
+  hideSearchBar = () => {
+    this.setState({showSearchBar: false})
+  }
+
+  showSearchBar = () => {
+    this.setState({showSearchBar: true})
+  }
+
   render = () => {
     return(
       <main>
         <section className="allInfo">
-        <Header />
+        <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} 
+        clearSearchResults={this.clearSearchResults} hasSearchResult={this.state.hasSearchResult} showSearchBar={this.state.showSearchBar}/>
           <section className="display-container">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
             {this.state.hasError 
             ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
-            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} /> } />}
-            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
+            : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} hideSearchBar={this.hideSearchBar}/>  } />}
+            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id} showSearchBar={this.showSearchBar} clearSearchResults={this.clearSearchResults}/> } />
             </Switch>
           </section>
         <Footer />
