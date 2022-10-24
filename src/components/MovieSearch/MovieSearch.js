@@ -34,8 +34,9 @@ class MovieSearch extends Component {
         <input 
           type="text"
           name="title"
-          placeholder="Search movie titles"
+          placeholder={!this.props.movieSearchResults.length && "Search movie titles"}
           value={this.state.title}
+          disabled={this.props.movieSearchResults.length}
           onChange={(event) => this.changeHandler(event)}
         />
        { this.props.movieSearchResults.length ?
