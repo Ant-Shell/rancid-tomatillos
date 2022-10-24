@@ -23,6 +23,11 @@ class MovieSearch extends Component {
     this.setState({title: ''})
   }
 
+  clearSearch = (event) => {
+    event.preventDefault()
+    this.props.clearSearchResults()
+  }
+
   render = () => {
     return (
       <form>
@@ -33,7 +38,9 @@ class MovieSearch extends Component {
           value={this.state.title}
           onChange={(event) => this.changeHandler(event)}
         />
-        <button onClick={(event) => this.submitSearch(event)}>Search</button>
+       { this.props.movieSearchResults.length ?
+       <button onClick={(event) => this.clearSearch(event)}>Clear Search</button> :
+       <button onClick={(event) => this.submitSearch(event)}>Search</button>}
       </form> 
     )
   }
