@@ -1,6 +1,10 @@
 html {
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+}
+
+body {
   height: 100%;
 }
 
@@ -13,6 +17,12 @@ main {
   background: radial-gradient(circle, rgba(44,48,65,1) 0%, rgba(40,44,60,1) 28%, rgba(3,4,10,1) 65%);
 }
 
-.view-wrapper {
-  overflow-y: auto;
+.allInfo {
+  height: 100%;
+}
+
+.display-container {
+  height: 75%;
+  display: flex;
+  justify-content: center;
 }
