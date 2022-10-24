@@ -37,9 +37,17 @@ const MovieCardContainer = ( {movies, movieSearchResults}) => {
     )
   })
 
+  const slidesPerViewSetter = () => {
+    if (movieSearchResults.length < 4) {
+      return movieSearchResults.length
+    } else {
+      return 4
+    }
+  }
+
   return (
     <div className="all-movies-container">
-      <Swiper
+    {!movieSearchResults.length ? <Swiper
           modules={[Navigation, Mousewheel, Keyboard]}
           slidesPerView={4}
           navigation={true}
@@ -48,8 +56,17 @@ const MovieCardContainer = ( {movies, movieSearchResults}) => {
           className="all-swiper-movies"
         >
         { allMovies }
-        {/* searchedMovies */}
-      </Swiper>
+      </Swiper> : <Swiper
+          modules={[Navigation, Mousewheel, Keyboard]}
+          slidesPerView={slidesPerViewSetter()}
+          navigation={true}
+          keyboard={true}
+          mousewheel={true}
+          className="all-swiper-movies"
+        >
+         { searchedMovies }
+        </Swiper>
+      }
     </div>
   )
 }
