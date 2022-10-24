@@ -15,7 +15,8 @@ class App extends Component {
     this.state = {
       movies: [],
       movieSearchResults: [],
-      hasError: false
+      hasError: false,
+      hasSearchResult: true
     }
   }
 
@@ -36,7 +37,11 @@ class App extends Component {
 
   findMovieByTitle = (movieTitle) => {
     const foundMovieList = this.state.movies.filter(movie => movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
-    this.setState({movieSearchResults: foundMovieList})
+    if (!foundMovieList.length) {
+      this.setState({hasSearchResult: false})
+    } else {
+      this.setState({movieSearchResults: foundMovieList, hasSearchResult: true})
+    }
   }
 
   clearSearchResults = () => {
@@ -47,7 +52,8 @@ class App extends Component {
     return(
       <main>
         <section className="allInfo">
-        <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} clearSearchResults={this.clearSearchResults}/>
+        <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} 
+        clearSearchResults={this.clearSearchResults} hasSearchResult={this.state.hasSearchResult}/>
           <section className="display-container">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }

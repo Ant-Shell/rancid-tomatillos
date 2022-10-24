@@ -1,6 +1,6 @@
 header {
   color: white;
-  height: 10vh;
+  height: 12vh;
   text-align: center;
   display: flex;
   align-items: center;
@@ -8,7 +8,24 @@ header {
 }
 
 .logo {
-  height: 100%;
+  height: 10vh;
   filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(216deg) brightness(108%) contrast(101%);
   margin: 0px 5px 0px 5px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+.search-box,
+.display-error {
+  width: 50%;
+}
+
+.logo-container,
+.title-container,
+.search-container {
+  width: 33%;
 }

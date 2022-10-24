@@ -27,6 +27,8 @@ class MovieSearch extends Component {
     event.preventDefault()
     this.props.clearSearchResults()
   }
+  
+
 
   render = () => {
     return (
@@ -34,7 +36,7 @@ class MovieSearch extends Component {
         <input 
           type="text"
           name="title"
-          placeholder={!this.props.movieSearchResults.length && "Search movie titles"}
+          placeholder="Search movie titles"
           value={this.state.title}
           disabled={this.props.movieSearchResults.length}
           onChange={(event) => this.changeHandler(event)}
