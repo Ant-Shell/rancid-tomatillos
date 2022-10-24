@@ -2,16 +2,15 @@ import React from "react"
 import "./Card.css"
 import {Link} from "react-router-dom"
 
-const Card = ( {title, poster, id} ) => {
+const Card = ( {title, poster, id, hideSearchBar} ) => {
   return (
     <div className="card" id={id}>
-      <Link to={`/${id}`}>
+      <Link to={`/${id}`} onClick={hideSearchBar}>
         <img className="movie-poster" src={poster} alt={`Movie poster for ${title}`}></img>
         <h2 style={{color: 'white', textDecoration: 'none'}} className="movie-title">{title}</h2>
       </Link>
     </div>
   )
 }
-
 
 export default Card
