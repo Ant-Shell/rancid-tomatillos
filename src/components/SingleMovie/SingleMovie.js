@@ -42,6 +42,7 @@ class SingleMovie extends Component {
 
       restoreMovies = () => {
         this.props.showSearchBar()
+        this.props.clearSearchResults()
       }
 
     render = () => {

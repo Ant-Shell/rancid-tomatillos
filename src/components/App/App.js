@@ -69,7 +69,7 @@ class App extends Component {
             {this.state.hasError 
             ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
             : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} hideSearchBar={this.hideSearchBar}/>  } />}
-            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id} showSearchBar={this.showSearchBar}/> } />
+            <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id} showSearchBar={this.showSearchBar} clearSearchResults={this.clearSearchResults}/> } />
             </Switch>
           </section>
         <Footer />
