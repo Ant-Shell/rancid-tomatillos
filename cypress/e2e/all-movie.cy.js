@@ -39,4 +39,13 @@ describe('All Movies', () => {
     .get('h2')
     .contains('Oops! An error occurred while loading.')  
   })
+
+  it('should have contributor names in the footer', () => {
+    cy.get('h3')
+    .contains("Contributors")
+    .get('h4')
+    .contains('Anthony Shellman')
+    .get('h4')
+    .contains('Will Hobson')
+  })
 })

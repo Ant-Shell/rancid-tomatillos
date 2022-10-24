@@ -46,8 +46,9 @@ class App extends Component {
   render = () => {
     return(
       <main>
+        <section className="allInfo">
         <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} clearSearchResults={this.clearSearchResults}/>
-          <div className="view-wrapper">
+          <section className="display-container">
             <Switch>
             {!this.state.movies.length && <Route exact path="/" render={() => <LoadingPage /> }/> }
             {this.state.hasError 
@@ -55,8 +56,9 @@ class App extends Component {
             : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} /> } />}
             <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id}/> } />
             </Switch>
-          </div>
+          </section>
         <Footer />
+        </section>
       </main>
     )
   }

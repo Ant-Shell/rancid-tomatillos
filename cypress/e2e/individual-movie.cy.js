@@ -20,17 +20,19 @@ describe('Individual Movie', () => {
 
   it('should have a rating', () => {
     cy.get('h3')
+    .get('#rating')
     .contains('7/10')
-
   })
 
   it('should have a runtime', () => {
     cy.get('h3')
+    .get('#runtime')
     .contains('125')
   })
 
   it('should have a genre', () => {
     cy.get('h3')
+    .get('#genre')
     .contains('Action')
   })
 
