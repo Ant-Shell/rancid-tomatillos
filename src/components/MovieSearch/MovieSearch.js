@@ -40,7 +40,7 @@ class MovieSearch extends Component {
         />
        { this.props.movieSearchResults.length ?
        <button onClick={(event) => this.clearSearch(event)}>Clear Search</button> :
-       <button onClick={(event) => this.submitSearch(event)}>Search</button>}
+       <button disabled={!this.state.title} onClick={(event) => this.submitSearch(event)}>Search</button>}
       </form> 
     )
   }
