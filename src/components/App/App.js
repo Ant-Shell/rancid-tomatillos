@@ -60,7 +60,7 @@ class App extends Component {
   render = () => {
     return(
       <main>
-        <section className="allInfo">
+        <section className="all-info">
         <Header findMovieByTitle={this.findMovieByTitle} movieSearchResults={this.state.movieSearchResults} 
         clearSearchResults={this.clearSearchResults} hasSearchResult={this.state.hasSearchResult} showSearchBar={this.state.showSearchBar}/>
           <section className="display-container">
