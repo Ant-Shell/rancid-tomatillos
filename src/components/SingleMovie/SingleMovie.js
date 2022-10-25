@@ -50,7 +50,6 @@ class SingleMovie extends Component {
         });
     }
 
-
     trailers = () => {
         let trailerArray = this.state.trailerSwiper.map((trailer) => {
             return (
@@ -71,12 +70,11 @@ class SingleMovie extends Component {
         this.props.clearSearchResults()
       }
 
-
     render = () => {
         const singleMovie = this.state
         return (
             this.state.hasError || this.state.title === ''
-            ? <ErrorPage errorMessage={this.state.errorMessage}/>
+            ? <ErrorPage />
             :
             <div className="movie-box" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${singleMovie.backgroundImage})`}}>
                 <h2>{singleMovie.title}</h2>
