@@ -2,7 +2,6 @@ import React from "react";
 import "./LoadingPage.css"
 import countDown from "../../assets/Countdown.gif"
 
-
 const LoadingPage = () => {
     return (
       <div className="loading-box">
@@ -11,6 +10,5 @@ const LoadingPage = () => {
       </div>
     )
 }
-  
-  
+
 export default LoadingPage

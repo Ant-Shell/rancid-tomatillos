@@ -4,7 +4,7 @@ import MovieSearch from "../MovieSearch/MovieSearch"
 import AWLogo from "../../assets/AWFilmReviews-Transparent.png"
 
 
-const Header = ({ findMovieByTitle, movieSearchResults, clearSearchResults, hasSearchResult, showSearchBar, toggleSearchBar }) => {
+const Header = ({ findMovieByTitle, movieSearchResults, clearSearchResults, hasSearchResult, showSearchBar }) => {
   return (
     <header>
       <div className="logo-container">

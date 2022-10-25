@@ -5,7 +5,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import InvalidLink from "../InvalidLink/InvalidLink";
 import './App.css';
 import { fetchAllMovieData } from '../../apiCalls'
 import { Route, Switch } from "react-router-dom"
