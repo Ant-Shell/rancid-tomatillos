@@ -1,13 +1,15 @@
 import React, { Component } from "react"
+import { Route, Switch } from "react-router-dom"
+import { fetchAllMovieData } from '../../apiCalls'
 import MovieCardContainer from "../MovieCardContainer/MovieCardContainer"
 import SingleMovie from "../SingleMovie/SingleMovie"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import InvalidLink from "../InvalidLink/InvalidLink";
+
 import './App.css';
-import { fetchAllMovieData } from '../../apiCalls'
-import { Route, Switch } from "react-router-dom"
 
 class App extends Component {
   constructor() {
@@ -70,6 +72,7 @@ class App extends Component {
             ? <Route exact path="/" render={() => <ErrorPage errorMessage={this.state.errorMessage}/> }/> 
             : <Route exact path="/" render={() => <MovieCardContainer movies={this.state.movies} movieSearchResults={this.state.movieSearchResults} hideSearchBar={this.hideSearchBar}/>  } />}
             <Route exact path="/:id" render={({match}) => <SingleMovie id={match.params.id} showSearchBar={this.showSearchBar} clearSearchResults={this.clearSearchResults}/> } />
+            <Route path="*" render={() => <InvalidLink /> }/>
             </Switch>
           </section>
         <Footer />
