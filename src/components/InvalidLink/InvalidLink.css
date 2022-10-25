@@ -1,0 +1,11 @@
+.invalid-page-box {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.invalid-link-image {
+    height: 60vh;
+}
