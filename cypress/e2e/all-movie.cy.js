@@ -48,4 +48,28 @@ describe('All Movies', () => {
     .get('h4')
     .contains('Will Hobson')
   })
+
+  it('should be able to search for a movie', () => {
+    cy.get('input[type=text]').type('fALL')
+    .get('button').click()
+    .get('.movie-poster')
+    .get('h2')
+    .contains('Fall')
+  })
+
+  it('should be able to clear a search', () => {
+    cy.get('input[type=text]').type('jeep')
+    .get('button').click()
+    .get('h2')
+    .contains('Jeepers Creepers')
+    .get('button').click()
+  })
+
+  it('should display an error message if unable to find movie', () => {
+    cy.get('input[type=text]').type('acSsadC')
+    .get('button')
+    .click()
+    .get('.error-message')
+    .contains('Result Not Found')
+  })
 })
