@@ -29,6 +29,22 @@ const fetchSpecificDetails = async (id) => {
         console.log(e.message)
         return (e.message)
     }
+}   
+
+const fetchTrailers = async (id) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+        if(!response.ok) {
+            console.log(response.status)
+            throw new Error('An error has occurred!')
+        }
+        const data = await response.json()
+        return data
+    }
+    catch (e) {
+        console.log(e.message)
+        return (e.message)
+    }
 }
 
-export { fetchAllMovieData, fetchSpecificDetails }
+export { fetchAllMovieData, fetchSpecificDetails, fetchTrailers }

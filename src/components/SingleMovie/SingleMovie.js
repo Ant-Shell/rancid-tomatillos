@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { fetchSpecificDetails } from '../../apiCalls'
+import { fetchSpecificDetails, fetchTrailers } from '../../apiCalls'
 import ErrorPage from "../ErrorPage/ErrorPage"
 import {Link} from "react-router-dom"
 import "./SingleMovie.css"
@@ -28,9 +28,11 @@ class SingleMovie extends Component {
 
     componentDidMount = () => {
         const id = this.props.id
-        fetchSpecificDetails(id)
+        Promise.all([fetchSpecificDetails(id), fetchTrailers(id)])
         .then(data => {
-            const genreList = data.genres.reduce((acc, genre) => { 
+            const movieInfo = data[0]
+            const trailers = data[1].results
+            const genreList = movieInfo.genres.reduce((acc, genre) => { 
                 if (acc.length > 1) {
                     acc = acc + ', ' + genre.name
                 } else {
@@ -38,15 +40,15 @@ class SingleMovie extends Component {
                 }
                 return acc
             }, '')
-         this.setState({backgroundImage: data.backdrop_path, title: data.title, posterPath: data.poster_path, 
-            voteAverage: data.vote_average, runTime: data.runtime, overview: data.overview,
-            genres: genreList})})
+            this.setState({backgroundImage: movieInfo.backdrop_path, title: movieInfo.title,  posterPath: movieInfo.poster_path, voteAverage: movieInfo.vote_average, runTime: movieInfo.runtime, overview: movieInfo.overview, genres: genreList, trailerSwiper: trailers})
+        })
         .catch(err => {
             if (err) {
                 this.setState({ hasError: true})
             }
-            console.error(err)});
-      }
+            console.error(err)
+        });
+    }
 
 
     trailers = () => {
@@ -78,7 +80,6 @@ class SingleMovie extends Component {
             :
             <div className="movie-box" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${singleMovie.backgroundImage})`}}>
                 <h2>{singleMovie.title}</h2>
-                <img className="movie-poster" src={`https://image.tmdb.org/t/p/original/${singleMovie.posterPath}`} alt={`Movie poster for ${singleMovie.title}`}></img>
                 <section className="movie-trailer">
                     <div className="movie-trailer-view">
                         <Swiper
@@ -86,7 +87,7 @@ class SingleMovie extends Component {
                             slidesPerView={1}
                             navigation={true}
                             keyboard={true}
-                            mousewheel={false}
+                            mousewheel={true}
                             className="movie-trailer-card"
                         >
                             {this.trailers()}
