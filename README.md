@@ -17,7 +17,7 @@
 
  - Interested in seeing a new movie, but don't want to risk your money on a flop? Check out A&W Movie Time! You can view new movies, watch trailers, and see the user ratings! Save yourself from wasting money and time on a bad movie!
 
- - [Check it out!](rancid-tomatillos-ivory.vercel.app)
+ - [Check it out!](http://rancid-tomatillos-ivory.vercel.app/)
 
  ## Animation
 
