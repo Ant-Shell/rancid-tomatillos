@@ -3,8 +3,8 @@
 ## Table of Contents
 
 1. Introduction
-2. Screenshots
-3. Contributor
+2. Animation
+3. Contributors
 4. Technologies Used
 5. Features
 6. Set Up
@@ -15,15 +15,17 @@
 
 ## Introduction
 
- - Interested in seeing a new movie, but don't want to risk your money on a flop? Check out A&W Movie Time! You can view new movies, watch trailers, and see the user ratings! Save yourself from wasting money and time on a bad movie! 
+ - Interested in seeing a new movie, but don't want to risk your money on a flop? Check out A&W Movie Time! You can view new movies, watch trailers, and see the user ratings! Save yourself from wasting money and time on a bad movie!
+
+ - [Check it out!](rancid-tomatillos-ivory.vercel.app)
 
  ## Animation
 
-![Preview1](https://user-images.githubusercontent.com/100455148/197814134-ae34d0ea-81c2-4fba-bdd9-c7f3afa2ce9a.mov)
+![Preview1](https://user-images.githubusercontent.com/100455148/198463038-1d6be2ef-1370-4146-9fa9-a89feae797d5.gif)
 
-![Preview2](https://user-images.githubusercontent.com/100455148/197814268-67300c01-f18a-4822-ab6e-c1631f5fb731.mov)
+![Preview2](https://user-images.githubusercontent.com/100455148/198463499-74cbff2e-fbef-4a82-923e-8733e69e6c8c.gif)
 
-![Preview3](https://user-images.githubusercontent.com/100455148/197814384-4c170c55-80f2-41d3-a02b-1868175472ad.mov)
+![Preview2](https://user-images.githubusercontent.com/100455148/198463876-7ee4afc8-4f33-4ee0-8d5e-604984b2e09c.gif)
 
  ## Contributors
 
